@@ -224,7 +224,8 @@ namespace PartyListLayout {
             for (var i = 0; i < 13; i++) {
                 try {
                     var pm = i switch {
-                        >= 0 and <= 10 => partyList->PartyMember[i],
+                        >= 0 and <= 7 => partyList->PartyMember[i],
+                        >= 8 and <= 10 => partyList->TrustMember[i - 8],
                         11 => partyList->Chocobo,
                         12 => partyList->Pet,
                         _ => throw new ArgumentOutOfRangeException()
