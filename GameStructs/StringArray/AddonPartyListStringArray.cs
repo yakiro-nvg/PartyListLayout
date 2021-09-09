@@ -4,7 +4,7 @@ using PartyListLayout.Helper;
 
 namespace PartyListLayout.GameStructs.StringArray {
 
-    [StructLayout(LayoutKind.Sequential, Size = 0x570)]
+    [StructLayout(LayoutKind.Sequential, Size = 0x6A8)]
     public unsafe struct AddonPartyListStringArray {
 
         public byte* String000;
@@ -18,7 +18,7 @@ namespace PartyListLayout.GameStructs.StringArray {
 
     }
 
-    [StructLayout(LayoutKind.Sequential, Size = 0x340)]
+    [StructLayout(LayoutKind.Sequential, Size = 0x478)]
     public unsafe struct AddonPartyListMembersStringArray {
 
         public AddonPartyListPartyMemberStrings Member0;
@@ -29,7 +29,9 @@ namespace PartyListLayout.GameStructs.StringArray {
         public AddonPartyListPartyMemberStrings Member5;
         public AddonPartyListPartyMemberStrings Member6;
         public AddonPartyListPartyMemberStrings Member7;
-
+        public AddonPartyListPartyMemberStrings Npc0;
+        public AddonPartyListPartyMemberStrings Npc1;
+        public AddonPartyListPartyMemberStrings Npc2;
 
         public AddonPartyListPartyMemberStrings this[int i] {
             get {
@@ -42,7 +44,10 @@ namespace PartyListLayout.GameStructs.StringArray {
                     5 => Member5,
                     6 => Member6,
                     7 => Member7,
-                    _ => throw new IndexOutOfRangeException("Index should be between 0 and 7")
+                    8 => Npc0,
+                    9 => Npc1,
+                    10 => Npc2,
+                    _ => throw new IndexOutOfRangeException("Index should be between 0 and 10")
                 };
             }
             set {
@@ -55,7 +60,10 @@ namespace PartyListLayout.GameStructs.StringArray {
                     case 5: Member5 = value; break;
                     case 6: Member6 = value; break;
                     case 7: Member7 = value; break;
-                    default: throw new IndexOutOfRangeException("Index should be between 0 and 7");
+                    case 8: Npc0 = value; break;
+                    case 9: Npc1 = value; break;
+                    case 10: Npc2 = value; break;
+                    default: throw new IndexOutOfRangeException("Index should be between 0 and 10");
                 }
             }
         }

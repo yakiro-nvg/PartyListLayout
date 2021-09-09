@@ -17,26 +17,17 @@ namespace PartyListLayout.GameStructs.NumberArray {
         /* 008 */ public int Unknown008;
 
         /* 009 */ public AddonPartyListMembersIntArray PartyMember;
-        
-        /* 321 */ public int Unknown321;
-        /* 322 */ public OneHundredIntegers Unknowns322;
-        /* 422 */ public OneHundredIntegers Unknowns422;
-        /* 432 */ public TenIntegers Unknowns432;
-        /* 442 */ public TenIntegers Unknowns442;
-        /* 452 */ public TenIntegers Unknowns452;
-        /* 462 */ public TenIntegers Unknowns462;
-        /* 472 */ public TenIntegers Unknowns472;
-        /* 482 */ public TenIntegers Unknowns482;
-        /* 492 */ public TenIntegers Unknowns492;
-        /* 502 */ public TenIntegers Unknowns502;
-        /* 512 */ public TenIntegers Unknowns512;
-        /* 513 */ public int Unknown513;
-        /* 514 */ public int Unknown514;
-        /* 515 */ public int Unknown515;
-        /* 516 */ public int Unknown516;
-        /* 517 */ public int Unknown517;
-        /* 518 */ public int Unknown518;
-        /* 519 */ public int Unknown519;
+
+        /* 438 */ public int Unknown438;
+        /* 439 */ public TenIntegers Unknown439;
+        /* 449 */ public TenIntegers Unknown449;
+        /* 459 */ public TenIntegers Unknown459;
+        /* 469 */ public TenIntegers Unknown469;
+        /* 479 */ public TenIntegers Unknown479;
+        /* 489 */ public TenIntegers Unknown489;
+        /* 499 */ public TenIntegers Unknown499;
+        /* 509 */ public TenIntegers Unknown509;
+        /* 519 */ public TenIntegers Unknown519;
     }
 
     [StructLayout(LayoutKind.Sequential, Size = 10 * 4)]
@@ -68,7 +59,7 @@ namespace PartyListLayout.GameStructs.NumberArray {
     }
     
     
-    [StructLayout(LayoutKind.Sequential, Size = 39 * 4 * 8)]
+    [StructLayout(LayoutKind.Sequential, Size = 39 * 4 * 11)]
     public unsafe struct AddonPartyListMembersIntArray {
         public AddonPartyListMemberIntArray Member0;
         public AddonPartyListMemberIntArray Member1;
@@ -78,6 +69,9 @@ namespace PartyListLayout.GameStructs.NumberArray {
         public AddonPartyListMemberIntArray Member5;
         public AddonPartyListMemberIntArray Member6;
         public AddonPartyListMemberIntArray Member7;
+        public AddonPartyListMemberIntArray Npc0;
+        public AddonPartyListMemberIntArray Npc1;
+        public AddonPartyListMemberIntArray Npc2;
 
         public AddonPartyListMemberIntArray this[int i] {
             get {
@@ -90,7 +84,10 @@ namespace PartyListLayout.GameStructs.NumberArray {
                     5 => Member5,
                     6 => Member6,
                     7 => Member7,
-                    _ => throw new IndexOutOfRangeException("Index should be between 0 and 7")
+                    8 => Npc0,
+                    9 => Npc1,
+                    10 => Npc2,
+                    _ => throw new IndexOutOfRangeException("Index should be between 0 and 10")
                 };
             }
             set {
@@ -103,7 +100,10 @@ namespace PartyListLayout.GameStructs.NumberArray {
                     case 5: Member5 = value; break;
                     case 6: Member6 = value; break;
                     case 7: Member7 = value; break;
-                    default: throw new IndexOutOfRangeException("Index should be between 0 and 7");
+                    case 8: Npc0 = value; break;
+                    case 9: Npc1 = value; break;
+                    case 10: Npc2 = value; break;
+                    default: throw new IndexOutOfRangeException("Index should be between 0 and 10");
                 }
             }
         }

@@ -224,22 +224,19 @@ namespace PartyListLayout {
             for (var i = 0; i < 13; i++) {
                 try {
                     var pm = i switch {
-                        >= 0 and <= 7 => partyList->PartyMember[i],
-                        8 => partyList->Unknown08,
-                        9 => partyList->Unknown09,
-                        10 => partyList->Unknown10,
+                        >= 0 and <= 10 => partyList->PartyMember[i],
                         11 => partyList->Chocobo,
                         12 => partyList->Pet,
                         _ => throw new ArgumentOutOfRangeException()
                     };
 
                     var intList = i switch {
-                        >= 0 and <= 7 => partyIntList->PartyMember[i],
+                        >= 0 and <= 10 => partyIntList->PartyMember[i],
                         _ => default
                     };
 
                     var stringList = i switch {
-                        >= 0 and <= 7 => partyStringList->PartyMembers[i],
+                        >= 0 and <= 10 => partyStringList->PartyMembers[i],
                         _ => default
                     };
 
@@ -341,6 +338,18 @@ namespace PartyListLayout {
                                     if (newNameBuilder.Length > 0) newNameBuilder.Append(" ");
                                     newNameBuilder.Append(splitName[2]);
                                 }
+
+                                var newName = newNameBuilder.ToString();
+
+                                tn->SetText(newName);
+                            } else {
+                                var newNameBuilder = new StringBuilder();
+                                if (!pnTac.RemoveLevel) {
+                                    newNameBuilder.Append(splitName[0]);
+                                }
+
+                                // TODO: "Crystal Exarch" => C. Exarch?
+                                newNameBuilder.Append(string.Join(" ", splitName.Skip(1)));
 
                                 var newName = newNameBuilder.ToString();
 
