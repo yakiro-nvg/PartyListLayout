@@ -247,7 +247,11 @@ namespace PartyListLayout {
                     if (c == null) continue;
                     var cNode = c->OwnerNode;
                     if (cNode == null) continue;
-                    
+
+                    if (i == 12) {
+                        HandleElementConfig(&cNode->AtkResNode, reset ? DefaultLayout.Pet: CurrentLayout.Pet, false);
+                    }
+
                     if (cNode->AtkResNode.IsVisible || reset) UpdateSlot(cNode, visibleIndex, pm, intList, stringList, ref maxX, ref maxY, reset);
                     if (cNode->AtkResNode.IsVisible) visibleIndex++;
 

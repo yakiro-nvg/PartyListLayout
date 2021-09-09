@@ -14,6 +14,7 @@ namespace PartyListLayout.Config {
         // Party Grid ElementConfigs
         ClickableArea = 2000,
         PartyTypeText = 2010,
+        PetElements = 2020,
 
         // Member Slot ElementConfigs
         Name = 3000,

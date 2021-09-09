@@ -26,6 +26,11 @@ namespace PartyListLayout.Config {
         [LayoutElement(LayoutElementTab.PartyGrid, "Party Type Text", 1)]
         public TextElementConfig PartyTypeText = new() { Position = new Vector2(7, 20), Glow = Util.V4FromRgba(0xFF5B839D) };
 
+        // Pet
+        [SerializeKey(SerializeKey.PetElements)]
+        [LayoutElement(LayoutElementTab.PartyGrid, "Pet", 2)]
+        public ElementConfig Pet = new() { };
+
         // Member Slot
         [SerializeKey(SerializeKey.Name)]
         [LayoutElement(LayoutElementTab.MemberSlot, "Name", 1)]
