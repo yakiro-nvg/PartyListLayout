@@ -292,6 +292,16 @@ namespace PartyListLayout {
             };
         }
 
+        private static string TrimLongName(string name) {
+            name = string.Join(string.Empty, name.Where(x => char.IsLetterOrDigit(x) || x == '\''));
+
+            if (name.Length >= 9) {
+                name = name.Substring(0, 6) + "..";
+            }
+
+            return name;
+        }
+
         private void HandleElementConfig(AtkResNode* resNode, ElementConfig eCfg, bool reset, float defScaleX = 1f, float defScaleY = 1f, float defPosX = 0, float defPosY = 0, Vector4 defColor = default, Vector4 defGlow = default, Vector3 defMultiplyColor = default, Vector3 defAddColor = default, string defText = null) {
             if (resNode == null) return;
             if (eCfg.Hide && !reset) {
@@ -343,7 +353,7 @@ namespace PartyListLayout {
 
                                 var newName = newNameBuilder.ToString();
 
-                                tn->SetText(newName);
+                                tn->SetText(TrimLongName(newName));
                             } else {
                                 var newNameBuilder = new StringBuilder();
                                 if (!pnTac.RemoveLevel) {
@@ -355,7 +365,7 @@ namespace PartyListLayout {
 
                                 var newName = newNameBuilder.ToString();
 
-                                tn->SetText(newName);
+                                tn->SetText(TrimLongName(newName));
                             }
                         }
                     }
