@@ -275,9 +275,10 @@ namespace PartyListLayout {
             }
             
             // Collision Node Update
-            partyList->AtkUnitBase.UldManager.NodeList[1]->SetWidth(1500); // HACK: just assume it's very long
+            partyList->AtkUnitBase.UldManager.NodeList[1]->SetWidth(2000); // HACK: just assume it's very long
+            partyList->AtkUnitBase.UldManager.NodeList[1]->SetHeight(500);
             //partyList->AtkUnitBase.UldManager.NodeList[1]->SetWidth(reset ? (ushort)500 : (ushort) maxX);
-            partyList->AtkUnitBase.UldManager.NodeList[1]->SetHeight(reset ? (ushort)480 : (ushort) maxY);
+            //partyList->AtkUnitBase.UldManager.NodeList[1]->SetHeight(reset ? (ushort)480 : (ushort) maxY);
             
             // Background Update
             partyList->AtkUnitBase.UldManager.NodeList[3]->ToggleVisibility(reset);
@@ -379,9 +380,9 @@ namespace PartyListLayout {
         private void UpdateSlot(AtkComponentNode* cNode, int visibleIndex, AddonPartyList.PartyListMemberStruct memberStruct, AddonPartyListMemberIntArray intArray, AddonPartyListPartyMemberStrings stringArray, ref int maxX, ref int maxY, bool reset, int? forceColumnCount = null) {
             var c = cNode->Component;
             if (c == null) return;
-            c->UldManager.NodeList[0]->SetWidth(reset ? (ushort)366 : (ushort)(CurrentLayout.SlotWidth * CurrentLayout.SelectionArea.Scale.X)); // Collision Node
-            c->UldManager.NodeList[0]->SetHeight(reset ? (ushort) 44 : (ushort)(CurrentLayout.SlotHeight * CurrentLayout.SelectionArea.Scale.Y));
-            c->UldManager.NodeList[0]->SetPositionFloat(reset ? 16 : 56, reset ? 12 : 18);
+            c->UldManager.NodeList[0]->SetWidth(reset ? (ushort)366 : (ushort)(CurrentLayout.SlotWidth * CurrentLayout.SelectionArea.Scale.X + 2)); // Collision Node
+            c->UldManager.NodeList[0]->SetHeight(reset ? (ushort) 44 : (ushort)(CurrentLayout.SlotHeight * CurrentLayout.SelectionArea.Scale.Y + 100));
+            c->UldManager.NodeList[0]->SetPositionFloat(reset ? 16 : 57, reset ? 12 : 18);
 
             c->UldManager.NodeList[1]->SetWidth(reset ? (ushort)367 : (ushort)(CurrentLayout.SlotWidth + 5 * CurrentLayout.SelectionArea.Scale.X));
             c->UldManager.NodeList[1]->SetHeight(reset ? (ushort) 69 : (ushort)(CurrentLayout.SlotHeight * CurrentLayout.SelectionArea.Scale.Y));
@@ -444,7 +445,8 @@ namespace PartyListLayout {
                 if (node == null) continue;
                 switch (node->NodeID) {
                     case 2:
-                        HandleElementConfig(node, CurrentLayout.TextEnmity, reset,  defPosX: 14, defPosY: 34, defColor: CurrentLayout.TextEnmity.Color, defGlow: CurrentLayout.TextEnmity.Glow);
+                        //HandleElementConfig(node, CurrentLayout.TextEnmity, reset,  defPosX: 14, defPosY: 34, defColor: CurrentLayout.TextEnmity.Color, defGlow: CurrentLayout.TextEnmity.Glow);
+                        node->ToggleVisibility(false); // HACK: above line doesn't work, don't know why
                         break;
                 }
             }
